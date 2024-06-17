@@ -7,6 +7,7 @@ To connect this bot to your Discord server with the necessary permissions, you'l
    - BOT_CLIENT_ID is also referred to as a bot's Application ID by Discord
    - PERMISSIONS is an integer that can be determined at the bottom of this page https://discord.com/developers/applications/YOUR_APPLICATION_ID_HERE/bot
       - This bot needs the ability to manage roles, which is 268435456.
+      - It also needs to be above any roles that it is going to manage in the discord Roles tab in order to do so.
 
 ## Requirements
 Rename `.example.env` to `.env` and fill it in wither your Discord Bot Token you'd like to add the bot to. 
