@@ -6,6 +6,7 @@ To connect this bot to your Discord server with the necessary permissions, you'l
 3. Gone to this URL to authorize your bot on the server(s) you want it: `https://discord.com/oauth2/authorize?client_id=<BOT_CLIENT_ID>&permissions=<PERMISSIONS>&integration_type=0&scope=bot` where
    - BOT_CLIENT_ID is also referred to as a bot's Application ID by Discord
    - PERMISSIONS is an integer that can be determined at the bottom of this page https://discord.com/developers/applications/YOUR_APPLICATION_ID_HERE/bot
+      - This bot needs the ability to manage roles, which is 268435456.
 
 ## Requirements
 Rename `.example.env` to `.env` and fill it in wither your Discord Bot Token you'd like to add the bot to. 
