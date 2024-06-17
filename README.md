@@ -37,3 +37,7 @@ source ~/.virtualenvs/botenv/bin/activate
 pip install -r requirements.txt
 nohup python3 mask_bloc_bot.py &
 ```
+
+## Development
+
+Use [`pipreqs`](https://builtin.com/software-engineering-perspectives/pip-freeze), not `pip freeze` to create `requirements.txt`.
