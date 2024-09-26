@@ -5,6 +5,7 @@ REACTION_MESSAGE_ID = os.getenv("REACTION_MESSAGE_ID")
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
+print(test)
 
 reactions_to_roles = {
     "🔥": 1252335644651557018,
