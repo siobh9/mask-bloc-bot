@@ -1,6 +1,5 @@
 name: registry
-on:
- push: all
+on: push
 
 permissions:
   packages: write
