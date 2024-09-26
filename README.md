@@ -10,7 +10,14 @@ To connect this bot to your Discord server with the necessary permissions, you'l
       - It also needs to be above any roles that it is going to manage in the discord Roles tab in order to do so.
 
 ## Requirements
-Rename `.example.env` to `.env` and fill it in wither your Discord Bot Token you'd like to add the bot to. 
+Rename `.example.env.vars` to `.env.vars` and fill it in wither your Discord Bot Token you'd like to add the bot to. 
+
+## To Run With Docker Compose
+This runs the bot as well as a process that checks if the image has been updated every 30 seconds for CI/CD. 
+
+```
+docker compose up
+```
 
 ## To Run Locally
 Before running the bot you will need to install all the requirements with this command:
