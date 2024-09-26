@@ -1,4 +1,4 @@
-import discord, os
+import discord, os, sys
 
 print(os.getenv("TOKEN"))
 sys.stdout.flush()
