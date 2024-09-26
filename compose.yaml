@@ -8,8 +8,9 @@ services:
       - "--rolling-restart"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-  guestbook:
+  mask-bot-bloc:
     image: ghcr.io/seanmc9/mask-bot-bloc:prod
+    env_file: .env.vars
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     deploy:
