@@ -10,39 +10,15 @@ To connect this bot to your Discord server with the necessary permissions, you'l
       - It also needs to be above any roles that it is going to manage in the discord Roles tab in order to do so.
 
 ## Requirements
-Rename `.example.env.vars` to `.env.vars` and fill it in wither your Discord Bot Token you'd like to add the bot to. 
 
 ## To Run With Docker Compose
+Rename `.example.env` to `.env` and fill it in with which build (dev or prod) you'd like to spin up.
+Rename `.example.env.vars` to `.env.vars` and fill it in with the Discord Bot Token you'd like to add the bot to. 
+
 This runs the bot as well as a process that checks if the image has been updated every 30 seconds for CI/CD. 
 
 ```
 docker compose up
-```
-
-## To Run Locally
-Before running the bot you will need to install all the requirements with this command:
-
-```
-python3 -m pip install -r requirements.txt
-```
-
-After that you can start it with
-
-```
-python3 mask_bloc_bot.py
-```
-
-## To Run on an Open Ocean Ubuntu 24.04 (LTS) x64 OS from scratch
-
-The last command in here will start the bot in the background so that the bot doesn't stop when you close your terminal, you can see it by running `ps` and looking for the line that says `python`.
-```
-apt install python3-pip
-apt install python3.12-venv
-mkdir ~/.virtualenvs
-python3 -m venv ~/.virtualenvs/botenv
-source ~/.virtualenvs/botenv/bin/activate
-pip install -r requirements.txt
-nohup python3 mask_bloc_bot.py &
 ```
 
 ## Development
