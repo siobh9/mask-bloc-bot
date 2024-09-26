@@ -29,11 +29,11 @@ jobs:
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+ 	env:
+	  TOKEN: ${{ secrets.TOKEN }}
+	  REACTION_MESSAGE_ID: ${{ secrets.REACTION_MESSAGE_ID }}
         with:
           context: .
           push: true
           tags: ghcr.io/seanmc9/mask-bloc-bot:prod
-	env:
-	  TOKEN: ${{ secrets.TOKEN }}
-	  REACTION_MESSAGE_ID: ${{ secrets.REACTION_MESSAGE_ID }}
 
