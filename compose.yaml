@@ -9,11 +9,10 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   mask-bot-bloc:
-    image: ghcr.io/seanmc9/mask-bot-bloc:prod
+    image: ghcr.io/seanmc9/mask-bloc-bot:prod 
     env_file: .env.vars
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     deploy:
-      mode: replicated
-      replicas: 3
+      mode: global
     restart: always
