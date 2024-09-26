@@ -1,7 +1,7 @@
-import discord, os, sys
+import discord, os
 
 print(os.getenv("TOKEN"))
-sys.stdout.flush()
+os.sys.stdout.flush()
 TOKEN = os.getenv("TOKEN")
 REACTION_MESSAGE_ID = os.getenv("REACTION_MESSAGE_ID")
 
