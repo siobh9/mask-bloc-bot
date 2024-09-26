@@ -6,6 +6,8 @@ services:
       - "--interval"
       - "30"
       - "--rolling-restart"
+      - "--cleanup"
+      - "true"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   mask-bot-bloc:
