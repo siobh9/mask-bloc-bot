@@ -1,7 +1,6 @@
 import discord, os
-from dotenv import load_dotenv
 
-load_dotenv() # so we can easily access env vars
+print(os.getenv("TOKEN"))
 TOKEN = os.getenv("TOKEN")
 REACTION_MESSAGE_ID = os.getenv("REACTION_MESSAGE_ID")
 
