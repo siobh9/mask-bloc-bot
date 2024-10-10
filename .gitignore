@@ -1,4 +1,5 @@
 .env
-.env.vars
+.env.dev
+.env.prod
 nohup.out
 err.log
