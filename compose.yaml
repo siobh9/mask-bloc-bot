@@ -22,7 +22,7 @@ services:
       - "dev-mask-bloc-bot"
       - "prod-mask-bloc-bot"
       - "--interval"
-      - "10"
+      - "30"
       - "--cleanup"
       - "true"
     volumes:
