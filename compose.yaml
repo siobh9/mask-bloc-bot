@@ -1,6 +1,5 @@
 services:
   dev-mask-bot-bloc:
-    profiles: [dev]
     container_name: dev-mask-bloc-bot
     image: ghcr.io/seanmc9/mask-bloc-bot:dev
     env_file: .env.dev
@@ -11,7 +10,6 @@ services:
     restart: always
 
   prod-mask-bot-bloc:
-    profiles: [prod]
     container_name: prod-mask-bloc-bot
     image: ghcr.io/seanmc9/mask-bloc-bot:prod
     env_file: .env.prod
