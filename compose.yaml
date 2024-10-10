@@ -1,5 +1,6 @@
 services:
   watchtower:
+    container_name: ${CURRENT_ENV}-mask-bloc-bot-watchtower
     image: containrrr/watchtower
     command:
       - "--label-enable"
@@ -11,6 +12,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   mask-bot-bloc:
+    container_name: ${CURRENT_ENV}-mask-bloc-bot
     image: ghcr.io/seanmc9/mask-bloc-bot:${CURRENT_ENV}
     env_file: .env.vars
     labels:
