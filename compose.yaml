@@ -1,20 +1,16 @@
 services:
-  dev-mask-bot-bloc:
+  dev-mask-bloc-bot:
     container_name: dev-mask-bloc-bot
     image: ghcr.io/seanmc9/mask-bloc-bot:dev
     env_file: .env.dev
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
     deploy:
       mode: global
     restart: always
 
-  prod-mask-bot-bloc:
+  prod-mask-bloc-bot:
     container_name: prod-mask-bloc-bot
     image: ghcr.io/seanmc9/mask-bloc-bot:prod
     env_file: .env.prod
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
     deploy:
       mode: global
     restart: always
@@ -23,10 +19,10 @@ services:
     container_name: mask-bloc-bot-watchtower
     image: containrrr/watchtower
     command:
-      - "--label-enable"
+      - "dev-mask-bloc-bot"
+      - "prod-mask-bloc-bot"
       - "--interval"
-      - "30"
-      - "--rolling-restart"
+      - "10"
       - "--cleanup"
       - "true"
     volumes:
