@@ -19,7 +19,7 @@ async def on_ready():
 
 @client.event
 async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
-    if reaction.message_id != int(REACTION_MESSAGE_ID):
+    if reaction.message_id != int(REACTION_MESSAGE_ID) or reaction.emoji.name not in reactions_to_roles:
         return
     
     role = client.get_guild(reaction.guild_id).get_role(reactions_to_roles[reaction.emoji.name])
