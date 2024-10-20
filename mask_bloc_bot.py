@@ -2,13 +2,13 @@ import discord, os
 
 TOKEN = os.getenv("TOKEN")
 REACTION_MESSAGE_ID = os.getenv("REACTION_MESSAGE_ID")
+REACTION_ROLE_ID = os.getenv("REACTION_ROLE_ID")
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
 reactions_to_roles = {
-    "🔥": 1252335644651557018,
-    "🗓️": 1252336334589132861
+    "🔥": int(REACTION_ROLE_ID)
 }
 
 # EVENTS
