@@ -7,10 +7,6 @@ REACTION_ROLE_ID = os.getenv("REACTION_ROLE_ID")
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
-reactions_to_roles = {
-    "🔥": int(REACTION_ROLE_ID)
-}
-
 # EVENTS
 
 @client.event
@@ -19,10 +15,10 @@ async def on_ready():
 
 @client.event
 async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
-    if reaction.message_id != int(REACTION_MESSAGE_ID) or reaction.emoji.name not in reactions_to_roles:
+    if reaction.message_id != int(REACTION_MESSAGE_ID):
         return
     
-    role = client.get_guild(reaction.guild_id).get_role(reactions_to_roles[reaction.emoji.name])
+    role = client.get_guild(reaction.guild_id).get_role(int(REACTION_ROLE_ID))
     
     if not role in reaction.member.roles:
         await reaction.member.add_roles(role)
