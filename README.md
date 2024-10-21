@@ -12,15 +12,10 @@ To connect this bot to your Discord server with the necessary permissions, you'l
 ## Requirements
 
 ## To Run With Docker Compose
-Rename `.example.env` to `.env` and fill it in with which build (dev or prod) you'd like to spin up.
-Rename `.example.env.vars` to `.env.vars` and fill it in with the Discord Bot Token you'd like to add the bot to. 
+Rename `.example.env` to `.env.prod` and/or `.env.dev` and fill it in with  the respective environment's variables.
 
 This runs the bot as well as a process that checks if the image has been updated every 30 seconds for CI/CD. 
 
 ```
 docker compose up
 ```
-
-## Development
-
-Use [`pipreqs`](https://builtin.com/software-engineering-perspectives/pip-freeze), not `pip freeze`, to create `requirements.txt`.
