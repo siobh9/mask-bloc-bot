@@ -1,7 +1,7 @@
 services:
   dev-mask-bloc-bot:
     container_name: dev-mask-bloc-bot
-    image: ghcr.io/seanmc9/mask-bloc-bot:dev
+    image: ghcr.io/siobh9/mask-bloc-bot:dev
     env_file: .env.dev
     deploy:
       mode: global
@@ -9,7 +9,7 @@ services:
 
   prod-mask-bloc-bot:
     container_name: prod-mask-bloc-bot
-    image: ghcr.io/seanmc9/mask-bloc-bot:prod
+    image: ghcr.io/siobh9/mask-bloc-bot:prod
     env_file: .env.prod
     deploy:
       mode: global
