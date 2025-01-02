@@ -19,8 +19,6 @@ async def on_ready():
 
 @client.event
 async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
-    print("reaction recieved", flush=True)
-
     if reaction.message_id != int(REACTION_MESSAGE_ID):
         return
     
@@ -41,7 +39,6 @@ async def on_error(event, *args, **kwargs):
 
 @tasks.loop(seconds=10.0)
 async def weekly_message():
-    await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("message")
-    print(f"Sending message", flush=True)
+    await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to not vouch for folks in the public channel!")
 
 client.run(TOKEN)
