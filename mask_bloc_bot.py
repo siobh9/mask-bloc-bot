@@ -37,8 +37,9 @@ async def on_error(event, *args, **kwargs):
 
 # TASKS
 
-@tasks.loop(seconds=10.0)
+@tasks.loop(hours=168.0)
 async def weekly_message():
+    print("sending message", flush=True)
     await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to not vouch for folks in the public channel!")
 
 client.run(TOKEN)
