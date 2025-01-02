@@ -13,6 +13,8 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print(f"We have logged in as {client.user}", flush=True)
+    if not weekly_message.is_running():
+        weekly_message.start()
 
 @client.event
 async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
