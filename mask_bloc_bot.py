@@ -31,4 +31,10 @@ async def on_error(event, *args, **kwargs):
         else:
             raise
 
+# TASKS
+
+@tasks.loop(seconds=5)
+async def weekly_message():
+    print(f"Sending message")
+
 client.run(TOKEN)
