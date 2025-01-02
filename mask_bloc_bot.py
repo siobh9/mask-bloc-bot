@@ -12,14 +12,12 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print(f"We have logged in as {client.user}")
+    print(f"We have logged in as {client.user}", flush=True)
 
 @client.event
 async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
     if reaction.message_id != int(REACTION_MESSAGE_ID):
         return
-
-    print(f"reaction recieved", flush=True)
     
     role = client.get_guild(reaction.guild_id).get_role(int(REACTION_ROLE_ID))
     
@@ -38,6 +36,6 @@ async def on_error(event, *args, **kwargs):
 
 @tasks.loop(seconds=5)
 async def weekly_message():
-    print(f"Sending message")
+    print(f"Sending message", flush=True)
 
 client.run(TOKEN)
