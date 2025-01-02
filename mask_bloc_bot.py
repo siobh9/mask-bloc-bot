@@ -18,6 +18,8 @@ async def on_ready():
 async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
     if reaction.message_id != int(REACTION_MESSAGE_ID):
         return
+
+    print(f"reaction recieved")
     
     role = client.get_guild(reaction.guild_id).get_role(int(REACTION_ROLE_ID))
     
