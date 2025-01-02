@@ -4,6 +4,7 @@ import discord, os
 TOKEN = os.getenv("TOKEN")
 REACTION_MESSAGE_ID = os.getenv("REACTION_MESSAGE_ID")
 REACTION_ROLE_ID = os.getenv("REACTION_ROLE_ID")
+VOUCH_REMINDER_CHANNEL_ID = os.getenv("VOUCH_REMINDER_CHANNEL_ID")
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -38,8 +39,9 @@ async def on_error(event, *args, **kwargs):
 
 # TASKS
 
-@tasks.loop(seconds=5.0)
+@tasks.loop(seconds=10.0)
 async def weekly_message():
+    client.channels.get(VOUCH_REMINDER_CHANNEL_ID).send("message")
     print(f"Sending message", flush=True)
 
 client.run(TOKEN)
