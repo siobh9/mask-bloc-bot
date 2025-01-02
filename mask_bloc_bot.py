@@ -1,8 +1,10 @@
+from discord.ext import tasks
 import discord, os
 
 TOKEN = os.getenv("TOKEN")
 REACTION_MESSAGE_ID = os.getenv("REACTION_MESSAGE_ID")
 REACTION_ROLE_ID = os.getenv("REACTION_ROLE_ID")
+VOUCH_REMINDER_CHANNEL_ID = os.getenv("VOUCH_REMINDER_CHANNEL_ID")
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -11,7 +13,9 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print(f"We have logged in as {client.user}")
+    print(f"We have logged in as {client.user}", flush=True)
+    if not weekly_message.is_running():
+        weekly_message.start()
 
 @client.event
 async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
@@ -30,5 +34,12 @@ async def on_error(event, *args, **kwargs):
             f.write(f'Unhandled message: {args[0]}\n')
         else:
             raise
+
+# TASKS
+
+@tasks.loop(hours=168.0)
+async def weekly_message():
+    print("sending message", flush=True)
+    await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to not vouch for folks in the public channel!")
 
 client.run(TOKEN)
