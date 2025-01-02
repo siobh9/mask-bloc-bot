@@ -41,7 +41,7 @@ async def on_error(event, *args, **kwargs):
 
 @tasks.loop(seconds=10.0)
 async def weekly_message():
-    client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("message")
+    await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("message")
     print(f"Sending message", flush=True)
 
 client.run(TOKEN)
