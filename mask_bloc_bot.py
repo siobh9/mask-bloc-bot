@@ -16,6 +16,8 @@ async def on_ready():
 
 @client.event
 async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
+    print("reaction recieved", flush=True)
+
     if reaction.message_id != int(REACTION_MESSAGE_ID):
         return
     
@@ -34,7 +36,7 @@ async def on_error(event, *args, **kwargs):
 
 # TASKS
 
-@tasks.loop(seconds=5)
+@tasks.loop(seconds=5.0)
 async def weekly_message():
     print(f"Sending message", flush=True)
 
