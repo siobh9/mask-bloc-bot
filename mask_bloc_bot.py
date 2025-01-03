@@ -1,5 +1,5 @@
 from discord.ext import tasks
-import discord, os, logging
+import discord, os, logging, time
 
 TOKEN = os.getenv("TOKEN")
 REACTION_MESSAGE_ID = os.getenv("REACTION_MESSAGE_ID")
@@ -39,9 +39,12 @@ async def on_error(event, *args, **kwargs):
 
 # TASKS
 
-@tasks.loop(hours=168.0)
+@tasks.loop(seconds=10.0)
 async def weekly_message():
-    logger.info("Sending reminder message")
+    logger.info("Starting sleep...")
+    time.sleep(3)
+    logger.info("Done sleeping")
     await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to not vouch for folks in the public channel!")
+    logger.info("Sent reminder message")
 
 client.run(TOKEN)
