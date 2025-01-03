@@ -7,7 +7,6 @@ REACTION_ROLE_ID = os.getenv("REACTION_ROLE_ID")
 VOUCH_REMINDER_CHANNEL_ID = os.getenv("VOUCH_REMINDER_CHANNEL_ID")
 
 logger = logging.getLogger('discord')
-logging.basicConfig(level=logging.INFO)
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
