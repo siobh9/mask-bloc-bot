@@ -44,7 +44,7 @@ SECONDS_IN_WEEK = 604800
 
 @tasks.loop(seconds=SECONDS_IN_WEEK) # will run again after this time elapses *and* the previous execution has completed
 async def weekly_message():
-    seconds_until_next_reminder = SECONDS_IN_WEEK - ((time.time() - VOUCH_REMINDER_START) % SECONDS_IN_WEEK)
+    seconds_until_next_reminder = SECONDS_IN_WEEK - ((int(time.time()) - VOUCH_REMINDER_START) % SECONDS_IN_WEEK)
     logger.info(f"Starting sleep for {seconds_until_next_reminder} seconds...")
     time.sleep(seconds_until_next_reminder)
     logger.info("Done sleeping")
