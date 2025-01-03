@@ -46,7 +46,7 @@ SECONDS_IN_WEEK = 604800
 @tasks.loop(seconds=SECONDS_IN_HOUR) # will run again after this time elapses *and* the previous execution has completed
 async def weekly_message():
     seconds_until_next_reminder = SECONDS_IN_WEEK - ((int(time.time()) - int(VOUCH_REMINDER_START)) % SECONDS_IN_WEEK)
-    if seconds_until_next_reminder < SECONDS_IN_HOUR:
+    if seconds_until_next_reminder <= SECONDS_IN_HOUR:
         await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to not vouch for folks in the public channel!")
         logger.info("Sent reminder message")
 
