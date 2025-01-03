@@ -5,6 +5,7 @@ TOKEN = os.getenv("TOKEN")
 REACTION_MESSAGE_ID = os.getenv("REACTION_MESSAGE_ID")
 REACTION_ROLE_ID = os.getenv("REACTION_ROLE_ID")
 VOUCH_REMINDER_CHANNEL_ID = os.getenv("VOUCH_REMINDER_CHANNEL_ID")
+VOUCH_REMINDER_START = os.getenv("VOUCH_REMINDER_START")
 
 logger = logging.getLogger('discord')
 
@@ -39,10 +40,13 @@ async def on_error(event, *args, **kwargs):
 
 # TASKS
 
-@tasks.loop(seconds=5.0)
+SECONDS_IN_WEEK = 604800
+
+@tasks.loop(seconds=SECONDS_IN_WEEK) # will run again after this time elapses *and* the previous execution has completed
 async def weekly_message():
-    logger.info("Starting sleep...")
-    time.sleep(10)
+    seconds_until_next_reminder = SECONDS_IN_WEEK - ((time.time() - VOUCH_REMINDER_START) % SECONDS_IN_WEEK))
+    logger.info(f"Starting sleep for {seconds_until_next_reminder} seconds...")
+    time.sleep(seconds_until_next_reminder)
     logger.info("Done sleeping")
     await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to not vouch for folks in the public channel!")
     logger.info("Sent reminder message")
