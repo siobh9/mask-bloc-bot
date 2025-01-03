@@ -1,10 +1,13 @@
 from discord.ext import tasks
-import discord, os
+import discord, os, logging, time
 
 TOKEN = os.getenv("TOKEN")
 REACTION_MESSAGE_ID = os.getenv("REACTION_MESSAGE_ID")
 REACTION_ROLE_ID = os.getenv("REACTION_ROLE_ID")
 VOUCH_REMINDER_CHANNEL_ID = os.getenv("VOUCH_REMINDER_CHANNEL_ID")
+VOUCH_REMINDER_START = os.getenv("VOUCH_REMINDER_START")
+
+logger = logging.getLogger('discord')
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -13,7 +16,7 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print(f"We have logged in as {client.user}", flush=True)
+    logger.info(f"We have logged in as {client.user}")
     if not weekly_message.is_running():
         weekly_message.start()
 
@@ -37,9 +40,14 @@ async def on_error(event, *args, **kwargs):
 
 # TASKS
 
-@tasks.loop(hours=168.0)
+SECONDS_IN_HOUR = 3600
+SECONDS_IN_WEEK = 604800
+
+@tasks.loop(seconds=SECONDS_IN_HOUR) # will run again after this time elapses *and* the previous execution has completed
 async def weekly_message():
-    print("sending message", flush=True)
-    await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to not vouch for folks in the public channel!")
+    seconds_until_next_reminder = SECONDS_IN_WEEK - ((int(time.time()) - int(VOUCH_REMINDER_START)) % SECONDS_IN_WEEK)
+    if seconds_until_next_reminder <= SECONDS_IN_HOUR:
+        await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to not vouch for folks in the public channel!")
+        logger.info("Sent reminder message")
 
 client.run(TOKEN)
