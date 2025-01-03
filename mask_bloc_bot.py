@@ -7,6 +7,9 @@ REACTION_ROLE_ID = os.getenv("REACTION_ROLE_ID")
 VOUCH_REMINDER_CHANNEL_ID = os.getenv("VOUCH_REMINDER_CHANNEL_ID")
 VOUCH_REMINDER_START = os.getenv("VOUCH_REMINDER_START")
 
+SECONDS_IN_HOUR = 3600
+SECONDS_IN_WEEK = 604800
+
 logger = logging.getLogger('discord')
 
 intents = discord.Intents.default()
@@ -39,9 +42,6 @@ async def on_error(event, *args, **kwargs):
             raise
 
 # TASKS
-
-SECONDS_IN_HOUR = 3600
-SECONDS_IN_WEEK = 604800
 
 @tasks.loop(seconds=SECONDS_IN_HOUR) # will run again after this time elapses *and* the previous execution has completed
 async def weekly_message():
