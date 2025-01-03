@@ -39,10 +39,10 @@ async def on_error(event, *args, **kwargs):
 
 # TASKS
 
-@tasks.loop(seconds=10.0)
+@tasks.loop(seconds=5.0)
 async def weekly_message():
     logger.info("Starting sleep...")
-    time.sleep(3)
+    time.sleep(10)
     logger.info("Done sleeping")
     await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to not vouch for folks in the public channel!")
     logger.info("Sent reminder message")
