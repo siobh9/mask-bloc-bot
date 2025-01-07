@@ -11,7 +11,7 @@ WELCOME_CHANNEL_ID = os.getenv("WELCOME_CHANNEL_ID")
 
 SECONDS_IN_HOUR = 3600
 SECONDS_IN_WEEK = 604800
-WELCOME MESSAGE = """
+WELCOME_MESSAGE = """
 
 <:maskedstar:> The point of this server is to help each other out with the various aspects of the mask distro process.
 
