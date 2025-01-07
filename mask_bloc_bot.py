@@ -34,6 +34,11 @@ async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
         await reaction.member.add_roles(role)
 
 @client.event
+async def on_member_update(before: discord.Member, after: discord.Member):
+    logger.info(f"before: {before}")
+    logger.info(f"after: {after}")
+
+@client.event
 async def on_error(event, *args, **kwargs):
     with open('err.log', 'a') as f:
         if event == 'on_message':
