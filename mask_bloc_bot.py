@@ -36,19 +36,14 @@ async def on_ready():
 
 @client.event
 async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
-    if reaction.message_id != int(REACTION_MESSAGE_ID):
-        return
-    
-    role = client.get_guild(reaction.guild_id).get_role(int(REACTION_ROLE_ID))
-    
-    if not role in reaction.member.roles:
+    if (reaction.message_id == int(REACTION_MESSAGE_ID)) and (not client.get_guild(reaction.guild_id).get_role(int(REACTION_ROLE_ID))) in reaction.member.roles:
         await reaction.member.add_roles(role)
 
 @client.event
 async def on_member_update(before: discord.Member, after: discord.Member):
     if (not any(role.id == int(SERVER_ACCESS_ROLE_ID) for role in before.roles)) and (any(role.id == int(SERVER_ACCESS_ROLE_ID) for role in after.roles)): # if someone who didn't have it before is recieving the server access role
         await client.get_channel(int(WELCOME_CHANNEL_ID)).send(f"Welcome to Mask Bloc Workspace, <@{after.id}> 🥳 !" + WELCOME_MESSAGE)
-    logger.info(f"User Id {after.id}, Name {after.name} recieved server access role and welcome message sent")
+        logger.info(f"User Id {after.id}, Name {after.name} recieved server access role and welcome message sent")
 
 @client.event
 async def on_error(event, *args, **kwargs):
