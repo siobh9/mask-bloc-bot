@@ -13,6 +13,7 @@ SECONDS_IN_WEEK = 604800
 logger = logging.getLogger('discord')
 
 intents = discord.Intents.default()
+intents.members = True
 client = discord.Client(intents=intents)
 
 # EVENTS
