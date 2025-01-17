@@ -13,11 +13,11 @@ SECONDS_IN_HOUR = 3600
 SECONDS_IN_WEEK = 604800
 WELCOME_MESSAGE = """
 
-<:star:> The point of this server is to help each other out with the various aspects of the mask distro process.
+:star: The point of this server is to help each other out with the various aspects of the mask distro process.
 
 > Feel free to post an intro (can include what you'd like for us to call you, pronouns, where you distribute masks, etc.). You're welcome to post what you'd like to get out of this shared workspace. All intro components are optional.
 
-<:star:> Take your time exploring our server. Starting with the channels under the Main folder 📂  might be good.
+:star: Take your time exploring our server. Starting with the channels under the Main folder 📂  might be good.
         📌 Look through pinned posts for important info."""
 
 logger = logging.getLogger('discord')
