@@ -62,7 +62,7 @@ async def on_error(event, *args, **kwargs):
 async def weekly_message():
     seconds_until_next_reminder = SECONDS_IN_WEEK - ((int(time.time()) - int(VOUCH_REMINDER_START)) % SECONDS_IN_WEEK)
     if seconds_until_next_reminder <= SECONDS_IN_HOUR:
-        await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to not vouch for folks in the public channel!")
+        await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send("Reminder to please vouch for folks in the welcome and introductions channel!")
         logger.info("Sent reminder message")
 
 client.run(TOKEN)
