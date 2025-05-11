@@ -12,9 +12,9 @@ To connect this bot to your Discord server with the necessary permissions, you'l
 ## Requirements
 
 ## To Run With Docker Compose
-Rename `.example.env` to `.env.prod` and/or `.env.dev` and fill it in with  the respective environment's variables.
+Rename `.example.env.dev` and `.example.env.prod` to `.env.dev` and `.env.prod` respectively, and fill them each in with the respective environment's variables.
 
-This runs the bot as well as a process that checks if the image has been updated every 30 seconds for CI/CD. 
+Run this command to start the bot as well as a process that checks if the image has been updated every 30 seconds for CI/CD: 
 
 ```
 docker compose up
