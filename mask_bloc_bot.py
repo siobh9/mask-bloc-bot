@@ -36,7 +36,6 @@ async def on_ready():
 
 @client.event
 async def on_raw_reaction_add(reaction: discord.RawReactionActionEvent):
-    logger.info(f"reaction: {reaction}")
     if reaction.message_id == int(REACTION_MESSAGE_ID):
         role = client.get_guild(reaction.guild_id).get_role(int(REACTION_ROLE_ID))
         if not role in reaction.member.roles:
