@@ -30,5 +30,4 @@ services:
     deploy:
       mode: global
     restart: always
-    labels: [ "com.centurylinklabs.watchtower.scope=mask-bloc-bot" ]
 
