@@ -25,6 +25,8 @@ services:
       - "30"
       - "--cleanup"
       - "true"
+      - "--scope"
+      - "mask-block-bot"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
