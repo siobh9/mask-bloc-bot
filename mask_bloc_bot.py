@@ -4,6 +4,8 @@ import discord, os, logging, time
 TOKEN = os.getenv("TOKEN")
 REACTION_MESSAGE_ID = os.getenv("REACTION_MESSAGE_ID")
 REACTION_ROLE_ID = os.getenv("REACTION_ROLE_ID")
+PUBLIC_REMINDER_CHANNEL_ID = os.getenv("PUBLIC_REMINDER_CHANNEL_ID")
+PUBLIC_REMINDER_START = os.getenv("PUBLIC_REMINDER_START")
 VOUCH_REMINDER_CHANNEL_ID = os.getenv("VOUCH_REMINDER_CHANNEL_ID")
 VOUCH_REMINDER_START = os.getenv("VOUCH_REMINDER_START")
 SERVER_ACCESS_ROLE_ID = os.getenv("SERVER_ACCESS_ROLE_ID")
@@ -20,12 +22,13 @@ WELCOME_MESSAGE = """
 :star: Take your time exploring our server. Starting with the channels under the Main folder 📂  might be good.
         📌 Look through pinned posts for important info."""
 
-WEEKLY_MESSAGE = """
+PUBLIC_REMINDER_MESSAGE = """
 Hi everyone! If you're waiting to get access to the full server, please don't say who invited you or post an intro yet.
 
-To get access, you need to react to the server guidelines post https://discord.com/channels/1073227549867520101/1200982159826108456/1200983315730145443, and the person who invited you needs to vouch for you in a private channel. One of the mods will then give you access manually. Thanks!
+To get access, you need to react to the server guidelines post https://discord.com/channels/1073227549867520101/1200982159826108456/1200983315730145443, and the person who invited you needs to vouch for you in a priv"""
 
-Also - reminder to please vouch for folks in the welcome and introductions channel!"""
+VOUCH_REMINDER_MESSAGE = """
+Reminder to please vouch for folks in the welcome and introductions channel!"""
 
 logger = logging.getLogger('discord')
 
@@ -66,10 +69,17 @@ async def on_error(event, *args, **kwargs):
 # TASKS
 
 @tasks.loop(seconds=SECONDS_IN_HOUR) # will run again after this time elapses *and* the previous execution has completed
-async def weekly_message():
+async def public_weekly_message():
+    seconds_until_next_reminder = SECONDS_IN_WEEK - ((int(time.time()) - int(PUBLIC_REMINDER_START)) % SECONDS_IN_WEEK)
+    if seconds_until_next_reminder <= SECONDS_IN_HOUR:
+        await client.get_channel(int(PUBLIC_REMINDER_CHANNEL_ID)).send(PUBLIC_REMINDER_MESSAGE)
+        logger.info("Sent public reminder message")
+
+@tasks.loop(seconds=SECONDS_IN_HOUR) # will run again after this time elapses *and* the previous execution has completed
+async def vouch_weekly_message():
     seconds_until_next_reminder = SECONDS_IN_WEEK - ((int(time.time()) - int(VOUCH_REMINDER_START)) % SECONDS_IN_WEEK)
     if seconds_until_next_reminder <= SECONDS_IN_HOUR:
-        await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send(WEEKLY_MESSAGE)
-        logger.info("Sent reminder message")
+        await client.get_channel(int(VOUCH_REMINDER_CHANNEL_ID)).send(VOUCH_REMINDER_MESSAGE)
+        logger.info("Sent vouch reminder message")
 
 client.run(TOKEN)
