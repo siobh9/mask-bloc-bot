@@ -25,7 +25,7 @@ WELCOME_MESSAGE = """
 PUBLIC_REMINDER_MESSAGE = """
 Hi everyone! If you're waiting to get access to the full server, please don't say who invited you or post an intro yet.
 
-To get access, you need to react to the server guidelines post https://discord.com/channels/1073227549867520101/1200982159826108456/1200983315730145443, and the person who invited you needs to vouch for you in a priv"""
+To get access, you need to react to the server guidelines post https://discord.com/channels/1073227549867520101/1200982159826108456/1200983315730145443, and the person who invited you needs to vouch for you in a private channel. One of the mods will then give you access manually. Thanks!"""
 
 VOUCH_REMINDER_MESSAGE = """
 Reminder to please vouch for folks in the welcome and introductions channel!"""
