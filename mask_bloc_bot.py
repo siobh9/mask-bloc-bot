@@ -17,10 +17,7 @@ WELCOME_MESSAGE = """
 
 :star: The point of this international server is to help each other out with the various aspects of the mask distro process.
 
-> Feel free to post an intro (can include what you'd like for us to call you, pronouns, where you distribute masks, etc.). You're welcome to post what you'd like to get out of this shared workspace. All intro components are optional.
-
-:star: Take your time exploring our server. Starting with the channels under the Main folder 📂  might be good.
-        📌 Look through pinned posts for important info."""
+> Feel free to post an intro (can include what you'd like for us to call you, pronouns, where you distribute masks, etc.). You're welcome to post what you'd like to get out of this shared workspace. All intro components are optional."""
 
 PUBLIC_REMINDER_MESSAGE = """
 Hi everyone! If you're waiting to get access to the full server, please don't say who invited you or post an intro yet.
